@@ -26,34 +26,31 @@
         input[type=text]:focus {
             width: 100%;
         }
+        h1 {
+            text-align: center;
+        }
+        #page-wrap {
+            text-align: center;
+            width: 800px;
+            margin: 0 auto;
+        }
     </style>
 </head>
-<body>
-<p>Welcome to MicroBlog, {{name}}</p>
+<body id="page-wrap">
+<h1>Welcome to MicroBlog, {{name}}</h1>
 
-<form  action="/index" method="post">
+<form  action="/messages" method="post">
     <input type="text" name="message" placeholder="Enter Message...">
 </form>
 <div>
-    <table class="table table-striped">
-        <tr>
-            <th>Messages</th>
-        </tr>
+    <ol>
+        {{#message}}
+            <h3>
+                <li>{{text}}</li>
+            </h3>
+        {{/message}}
+    </ol>
 
-
-
-            {{#message}}
-        <ol>
-            <tr>
-                <h3>
-                    <td><li>{{text}}</li><td>
-                </h3>
-            </tr>
-        </ol>
-            {{/message}}
-
-
-    </table>
 </div>
 
 </body>

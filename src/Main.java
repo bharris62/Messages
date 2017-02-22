@@ -25,14 +25,15 @@ public class Main {
                 },
                 new MustacheTemplateEngine());
 
-        Spark.post("/login", (request, response) -> {
+        Spark.post("/index", (request, response) -> {
             String name = request.queryParams("loginName");
+            name = name.substring(0,1).toUpperCase() + name.substring(1);
             user = new User(name);
             response.redirect("/");
             return "";
         });
 
-        Spark.post("/index", (request, response) -> {
+        Spark.post("/messages", (request, response) -> {
             String text = request.queryParams("message");
             Message message = new Message(text);
             messages.add(message);
